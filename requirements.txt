@@ -6,4 +6,5 @@ xgboost
 seaborn
 jupyter
 catboost
+dill
 -e .
