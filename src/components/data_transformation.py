@@ -26,14 +26,8 @@ class DataTransformation:
 
     def get_data_transformer_object(self):
         try:
-            numerical_columns = ["PassengerId", "Survived","Pclass","Age"]
-            categorical_columns = [
-                "Name",
-                
-                
-                "Ticket"
-                
-            ]
+            numerical_columns =['Age', 'Fare', 'SibSp', 'Parch']
+            categorical_columns =['Pclass', 'Gender', 'Embarked']
             num_pipeline= Pipeline(
                 steps=[
                 ("imputer",SimpleImputer(strategy="median")),
@@ -81,14 +75,15 @@ class DataTransformation:
 
             preprocessing_obj=self.get_data_transformer_object()
 
-            target_column_name="Gender"
-            numerical_columns = ["PassengerId", "Survived","Pclass","Age"]
+            target_column_name = "Survived" 
+            numerical_columns = ['Age', 'Fare', 'SibSp', 'Parch']
+            
 
-            input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
-            target_feature_train_df=train_df[target_column_name]
+            input_feature_train_df = train_df.drop(columns=[target_column_name], axis=1)
+            target_feature_train_df = train_df[target_column_name]
 
-            input_feature_test_df=test_df.drop(columns=[target_column_name],axis=1)
-            target_feature_test_df=test_df[target_column_name]
+            input_feature_test_df = test_df.drop(columns=[target_column_name], axis=1)
+            target_feature_test_df = test_df[target_column_name]
             print("Columns in input_feature_train_df:", input_feature_train_df.columns)
 
 
